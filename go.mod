@@ -1,3 +1,3 @@
-module github.com/Hongtao-Xu/langgo
+module langgo
 
 go 1.18
