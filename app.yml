@@ -1,0 +1,18 @@
+mysql:
+  main:
+    dsn: root:xht314159@tcp(localhost:3306)/simple?charset=utf8mb4&parseTime=True&loc=Local
+    conn_max_lifetime: 1h
+    max_idle_conns: 1
+    max_open_conns: 10
+  order:
+    dsn: root:xht314159@tcp(localhost:3306)/simple?charset=utf8mb4&parseTime=True&loc=Local
+    conn_max_lifetime: 1h
+    max_idle_conns: 1
+    max_open_conns: 10
+my:
+  message: this is a custom component
+jwt:
+  secret: "123456"
+server:
+  etcd_host: "localhost:2379"
+  service_name: "langgo/grpcServer"

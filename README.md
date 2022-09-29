@@ -7,8 +7,14 @@
 
 - [安装](#安装)
 - [快速开始](#快速开始)
-- [grpc](#grpc)
-- [mysql](#mysql)
+- [组件](#组件)
+    - [mysql](#mysql)
+    - [redis](#redis)
+- [helper](#helper)
+    - [rsa](#rsa)
+    - [aes](#aes)
+    - [grpc](#grpc)
+- [自定义组件](#自定义组件)
 - [goreleaser使用](#goreleaser使用)
 
 
@@ -44,13 +50,24 @@ func main() {
 }
 ```
 
+## 组件
+
+组件有两个特征，需要配置或者需要持久化的实例，例如`mysql`，需要对数据库连接参数进行配置，连接也需要持久化在内存当中，这两种情况下需要制作成组件。`langgo`有一些内置的组件。
+
+
 ## grpc
 
 grpc支持单机模式和etcd服务发现两种模式，可以参考examples/grpc/single和examples/grpc/etcd两个例子。
 
+完成特性：
+
+* 支持etcd等服务发现模式
+* 支持tls双向认证
+* 支持链表式多中间件
+
 ## mysql
 
-参考 `examples/mysql`
+参考 `examples/mysql`，实际整合了`gorm`
 
 mysql配置支持多个mysql账号，例如：
 
@@ -80,7 +97,38 @@ fmt.Println(one)
 
 `mysql.Main()` 表示获取配置中`main`下的mysql配置，如果想获取`order`，需要使用 `mysql.Get("order")`
 
+## redis
 
+与mysql差不多，可以对redis进行配置并使用多个redis数据源，可以对redis连接池进行配置，实际上整合了`go-reids`
+
+
+## helper
+
+无需配置和内存持久化，直接调用的函数集合。
+
+## rsa
+
+支持 加密、解密、创建密钥（根据长度）、签名、校验等方法
+
+## aes
+
+支持加密、解密等方法
+
+## 自定义组件
+
+完全可以在自己的项目中实现自定义组件与使用`langgo`框架中的内置组件的方式一样，只需要您在自己的项目里拷贝出`hello`组件的代码，进行改造，然后在启动的时候放在`langgo.Run`里一起启动就可以了：
+
+```go
+langgo.Run(&my.Instance{})
+```
+
+组件的配置文件放在`app.yml`配置中就可以了，例如：
+```yaml
+my:
+  message: my name is langgo
+```
+
+可以参考 examples/component/custom 这个例子
 
 ## goreleaser使用
 

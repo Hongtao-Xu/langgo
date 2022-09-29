@@ -1,11 +1,17 @@
-jwt:
-  secret: "123456"
+oss:
+  endpoint:
+  access_key_id:
+  access_key_secret:
+  bucket_name:
+  domain:
+
 mysql:
   main:
     conn_max_lifetime: 1h
     dsn: root:123456@tcp(localhost:3306)/simple?charset=utf8mb4&parseTime=True&loc=Local
     max_idle_conns: 1
     max_open_conns: 10
+
 redis:
   main:
     dsn: redis://default:redispw@localhost:55000/0
