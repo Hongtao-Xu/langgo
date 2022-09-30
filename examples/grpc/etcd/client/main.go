@@ -6,8 +6,8 @@ import (
 	"log"
 	"time"
 
-	"langgo/core/rpc"
-	"langgo/examples/grpc/etcd/client/pb"
+	"github.com/Hongtao-Xu/langgo/core/rpc"
+	"github.com/Hongtao-Xu/langgo/examples/grpc/etcd/client/pb"
 
 	clientv3 "go.etcd.io/etcd/client/v3"
 	"go.etcd.io/etcd/client/v3/naming/resolver"

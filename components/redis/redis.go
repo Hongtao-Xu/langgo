@@ -1,8 +1,8 @@
 package redis
 
 import (
+	"github.com/Hongtao-Xu/langgo/core"
 	"github.com/go-redis/redis"
-	"langgo/core"
 )
 
 const name = "redis"

@@ -1,6 +1,6 @@
 package server
 
-import "langgo/core"
+import "github.com/Hongtao-Xu/langgo/core"
 
 type Instance struct {
 	EtcdHost    string `yaml:"etcd_host"`

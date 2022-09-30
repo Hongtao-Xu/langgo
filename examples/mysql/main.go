@@ -1,10 +1,10 @@
 package main
 
 import (
-	"langgo"
-	"langgo/components/mysql"
-	"langgo/core"
-	"langgo/core/log"
+	"github.com/Hongtao-Xu/langgo"
+	"github.com/Hongtao-Xu/langgo/components/mysql"
+	"github.com/Hongtao-Xu/langgo/core"
+	"github.com/Hongtao-Xu/langgo/core/log"
 )
 
 func main() {

@@ -3,9 +3,9 @@ package sms
 import (
 	"errors"
 	"fmt"
-	"langgo/core/log"
 
-	"langgo/core"
+	"github.com/Hongtao-Xu/langgo/core"
+	"github.com/Hongtao-Xu/langgo/core/log"
 
 	"github.com/aliyun/alibaba-cloud-sdk-go/services/dysmsapi"
 )

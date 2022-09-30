@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"log"
 
-	"langgo/core/rpc"
-	"langgo/examples/grpc/tls/client/pb"
+	"github.com/Hongtao-Xu/langgo/core/rpc"
+	"github.com/Hongtao-Xu/langgo/examples/grpc/tls/client/pb"
 )
 
 const addr = "localhost:8000"

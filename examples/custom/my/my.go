@@ -1,6 +1,6 @@
 package my
 
-import "langgo/core"
+import "github.com/Hongtao-Xu/langgo/core"
 
 //============自定义组件实例==============
 

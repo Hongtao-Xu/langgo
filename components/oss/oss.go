@@ -7,8 +7,8 @@ import (
 	"io/ioutil"
 	"os"
 
-	"langgo/core"
-	"langgo/core/log"
+	"github.com/Hongtao-Xu/langgo/core"
+	"github.com/Hongtao-Xu/langgo/core/log"
 
 	aliyunOss "github.com/aliyun/aliyun-oss-go-sdk/oss"
 )

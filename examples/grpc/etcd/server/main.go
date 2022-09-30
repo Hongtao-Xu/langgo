@@ -6,12 +6,12 @@ import (
 	"os"
 	"syscall"
 
-	"langgo"
-	"langgo/core"
-	"langgo/core/rpc"
-	cs "langgo/examples/grpc/etcd/server/components/server"
-	"langgo/examples/grpc/etcd/server/pb"
-	"langgo/examples/grpc/etcd/server/service/server"
+	"github.com/Hongtao-Xu/langgo"
+	"github.com/Hongtao-Xu/langgo/core"
+	"github.com/Hongtao-Xu/langgo/core/rpc"
+	cs "github.com/Hongtao-Xu/langgo/examples/grpc/etcd/server/components/server"
+	"github.com/Hongtao-Xu/langgo/examples/grpc/etcd/server/pb"
+	"github.com/Hongtao-Xu/langgo/examples/grpc/etcd/server/service/server"
 )
 
 func main() {

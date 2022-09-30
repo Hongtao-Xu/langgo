@@ -3,7 +3,7 @@ package password
 import (
 	"crypto/sha1"
 	"encoding/hex"
-	"langgo/core"
+	"github.com/Hongtao-Xu/langgo/core"
 )
 
 type Instance struct {

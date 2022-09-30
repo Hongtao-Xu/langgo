@@ -1,10 +1,10 @@
 package main
 
 import (
-	"langgo"
-	"langgo/core/rpc"
-	"langgo/examples/grpc/single/server/pb"
-	"langgo/examples/grpc/single/server/service/server"
+	"github.com/Hongtao-Xu/langgo"
+	"github.com/Hongtao-Xu/langgo/core/rpc"
+	"github.com/Hongtao-Xu/langgo/examples/grpc/single/server/pb"
+	"github.com/Hongtao-Xu/langgo/examples/grpc/single/server/service/server"
 )
 
 const addr = "localhost:8000"

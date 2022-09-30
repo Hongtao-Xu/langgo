@@ -1,8 +1,8 @@
 package oss
 
 import (
+	"github.com/Hongtao-Xu/langgo/core"
 	"github.com/stretchr/testify/assert"
-	"langgo/core"
 	"testing"
 )
 

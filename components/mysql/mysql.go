@@ -1,10 +1,10 @@
 package mysql
 
 import (
-	"langgo/core"
 	"time"
 
-	"langgo/core/log"
+	"github.com/Hongtao-Xu/langgo/core"
+	"github.com/Hongtao-Xu/langgo/core/log"
 
 	gormMysql "gorm.io/driver/mysql"
 	"gorm.io/gorm"

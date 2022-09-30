@@ -4,9 +4,11 @@ import (
 	"fmt"
 	"github.com/rs/zerolog"
 	sysio "io"
-	"langgo/core"
-	"langgo/heplers/io"
-	"langgo/heplers/reopen"
+
+	"github.com/Hongtao-Xu/langgo/core"
+	"github.com/Hongtao-Xu/langgo/heplers/io"
+	"github.com/Hongtao-Xu/langgo/heplers/reopen"
+
 	"log"
 	"os"
 	"path"

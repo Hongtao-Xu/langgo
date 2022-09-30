@@ -2,7 +2,7 @@ package server
 
 import (
 	"context"
-	"langgo/examples/grpc/tls/server/pb"
+	"github.com/Hongtao-Xu/langgo/examples/grpc/tls/server/pb"
 )
 
 func (s Server) Hello(ctx context.Context, empty *pb.Empty) (*pb.HelloResponse, error) {

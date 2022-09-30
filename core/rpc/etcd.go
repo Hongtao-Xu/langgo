@@ -3,8 +3,9 @@ package rpc
 import (
 	"context"
 	"fmt"
-	"langgo/core"
-	"langgo/core/log"
+
+	"github.com/Hongtao-Xu/langgo/core"
+	"github.com/Hongtao-Xu/langgo/core/log"
 
 	clientv3 "go.etcd.io/etcd/client/v3"
 	"go.etcd.io/etcd/client/v3/naming/endpoints"

@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"langgo"
-	"langgo/components/hello"
-	"langgo/core/log"
+	"github.com/Hongtao-Xu/langgo"
+	"github.com/Hongtao-Xu/langgo/components/hello"
+	"github.com/Hongtao-Xu/langgo/core/log"
 )
 
 func main() {

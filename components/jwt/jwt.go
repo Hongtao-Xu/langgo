@@ -7,7 +7,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"langgo/core"
+	"github.com/Hongtao-Xu/langgo/core"
 	"strings"
 )
 

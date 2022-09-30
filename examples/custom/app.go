@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"langgo"
-	"langgo/components/mysql"
-	"langgo/examples/custom/my"
+	"github.com/Hongtao-Xu/langgo"
+	"github.com/Hongtao-Xu/langgo/components/mysql"
+	"github.com/Hongtao-Xu/langgo/examples/custom/my"
 )
 
 func main() {

@@ -1,8 +1,8 @@
 package redis
 
 import (
-	"langgo/core"
-	"langgo/core/log"
+	"github.com/Hongtao-Xu/langgo/core"
+	"github.com/Hongtao-Xu/langgo/core/log"
 	"testing"
 	"time"
 )

@@ -2,7 +2,7 @@ package server
 
 import (
 	"context"
-	"langgo/examples/grpc/etcd/server/pb"
+	"github.com/Hongtao-Xu/langgo/examples/grpc/etcd/server/pb"
 )
 
 func (s Server) Hello(ctx context.Context, empty *pb.Empty) (*pb.HelloResponse, error) {

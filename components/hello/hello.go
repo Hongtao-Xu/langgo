@@ -1,6 +1,6 @@
 package hello
 
-import "langgo/core"
+import "github.com/Hongtao-Xu/langgo/core"
 
 type Instance struct {
 	Message string `yaml:"message"`

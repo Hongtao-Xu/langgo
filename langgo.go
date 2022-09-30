@@ -1,10 +1,10 @@
 package langgo
 
 import (
+	"github.com/Hongtao-Xu/langgo/core"
+	"github.com/Hongtao-Xu/langgo/core/log"
+	"github.com/Hongtao-Xu/langgo/heplers/io"
 	"github.com/joho/godotenv"
-	"langgo/core"
-	"langgo/core/log"
-	"langgo/heplers/io"
 	"os"
 	"path"
 )
