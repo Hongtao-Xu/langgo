@@ -7,6 +7,8 @@
 
 - [安装](#安装)
 - [快速开始](#快速开始)
+- [核心组件](#核心组件)
+  - [日志](#日志)
 - [组件](#组件)
     - [mysql](#mysql)
     - [redis](#redis)
@@ -49,6 +51,29 @@ func main() {
 	log.Logger("component", "hello").Info().Msg(hello.GetInstance().Message)
 }
 ```
+
+## 日志
+日志扩展自 (zerolog)[https://github.com/rs/zerolog]
+
+特性：
+
+1. 支持自定义信号切割日志
+
+在配置文件中增加log配置
+```yaml
+log:
+  reopen_signal: 31
+```
+
+`reopen_signal`是自定义信号量的int值，当服务收到信号以后会自动mv出新的日志文件，方便按照日、小时等自定义策略来切分日志，mv不会丢失日志。
+
+2. 支持动态创建日志文件例如 app.log order.log 方便日志分类
+
+```go
+log.Logger("app", "login").Info().Interface("request", request).Send()
+log.Logger("order", "create").Info().Interface("request", request).Send()
+```
+app, order会自动被创建为logs/app.log, logs/order.log
 
 ## 组件
 

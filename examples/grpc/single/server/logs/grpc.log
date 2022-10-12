@@ -1,0 +1,2 @@
+2022-10-01T09:58:42+08:00 INF server ready addr=localhost:8000 tag=run
+2022-10-01T09:58:46+08:00 INF req={} resp={"msg":"hello"} runtime=0 tag=run

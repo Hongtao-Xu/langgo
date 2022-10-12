@@ -2,18 +2,19 @@ package log
 
 import (
 	"fmt"
-	"github.com/rs/zerolog"
-	sysio "io"
-
-	"github.com/Hongtao-Xu/langgo/core"
 	"github.com/Hongtao-Xu/langgo/heplers/io"
-	"github.com/Hongtao-Xu/langgo/heplers/reopen"
-
+	sysio "io"
 	"log"
 	"os"
 	"path"
+	"sync"
 	"syscall"
 	"time"
+
+	"github.com/Hongtao-Xu/langgo/core"
+	"github.com/Hongtao-Xu/langgo/heplers/reopen"
+
+	"github.com/rs/zerolog"
 )
 
 type Instance struct {
@@ -30,6 +31,7 @@ type item struct {
 }
 
 var loggers = make(map[string]item)
+var lock sync.Mutex //解决log的并发问题
 
 // Load 加载日志实例
 func (i *Instance) Load() {
@@ -53,33 +55,49 @@ func (i *Instance) Load() {
 	}
 }
 
+func (i *Instance) GetName() string {
+	return name
+}
+
 // Logger 日志处理
 func Logger(name string, tag string) *zerolog.Logger {
 	rp := path.Join(core.WorkDir, "logs")
-	io.CreateFolder(rp, true)
+
 	if _, ok := loggers[name]; !ok {
-		p := path.Join(rp, fmt.Sprintf("%s.log", name))
-		rf, err := reopen.NewFileWriter(p)
-		if err != nil {
-			log.Fatalf("%s create %s log file %s : %v", "langgo", name, p, err)
-		}
-		//开发环境
-		if core.EnvName == core.Development {
-			mf := sysio.MultiWriter(zerolog.ConsoleWriter{Out: os.Stdout, TimeFormat: time.Kitchen, NoColor: false}, //输出到控制台
-				zerolog.ConsoleWriter{Out: rf, TimeFormat: time.RFC3339, NoColor: true}) //输出到文件
-			l := zerolog.New(mf).With().Str("tag", tag).Timestamp().Logger()
-			loggers[name] = item{
-				logger: l,
-				writer: rf,
+		func() {
+			//非sync.Map的线程安全解决：锁+双重检查
+			lock.Lock()
+			if _, ok := loggers[name]; ok { //第一个线程完成后，其他相同name的线程，直接返回
+				fmt.Println("name", "exists")
+				return
 			}
-		} else { //生成环境
-			zc := zerolog.ConsoleWriter{Out: rf, TimeFormat: time.RFC3339, NoColor: true}
-			l := zerolog.New(zc).With().Str("tag", tag).Timestamp().Logger()
-			loggers[name] = item{
-				logger: l,
-				writer: rf,
+			defer lock.Unlock()
+			io.CreateFolder(rp, true)
+			p := path.Join(rp, fmt.Sprintf("%s.log", name))
+			rf, err := reopen.NewFileWriter(p)
+			if err != nil {
+				log.Fatalf("%s create %s log file %s : %v", "langgo", name, p, err)
 			}
-		}
+			//开发环境
+			if core.EnvName == core.Development {
+				//关闭序列化，使用默认输出:
+				//writer := zerolog.ConsoleWriter{Out: rf, TimeFormat: time.RFC3339, NoColor: true}
+				mf := sysio.MultiWriter(zerolog.ConsoleWriter{Out: os.Stdout, TimeFormat: time.Kitchen, NoColor: false}, //输出到控制台
+					rf) //输出到文件
+				l := zerolog.New(mf).With().Str("tag", tag).Timestamp().Logger()
+				loggers[name] = item{
+					logger: l,
+					writer: rf,
+				}
+			} else { //生产环境
+				//zc := zerolog.ConsoleWriter{Out: rf, TimeFormat: time.RFC3339, NoColor: true}
+				l := zerolog.New(rf).With().Str("tag", tag).Timestamp().Logger()
+				loggers[name] = item{
+					logger: l,
+					writer: rf,
+				}
+			}
+		}()
 	}
 	it := loggers[name]
 	return &it.logger
